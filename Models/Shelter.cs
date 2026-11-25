@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace ShelterApiJo.Models;
 
@@ -15,4 +14,6 @@ public partial class Shelter
     public int Capacity { get; set; }
 
     public DateTime? RegTime { get; set; }
+
+    public virtual ICollection<Animal> Animals { get; set; } = new List<Animal>();
 }

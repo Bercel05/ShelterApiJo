@@ -19,13 +19,17 @@ public partial class AnimalshelterContext : DbContext
 
     public virtual DbSet<Shelter> Shelters { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySQL("server=localhost;database=animalshelter;user=root;password=");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Animal>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("animals");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("animals");
 
             entity.HasIndex(e => e.ShelterId, "ShelterId");
 
@@ -35,7 +39,7 @@ public partial class AnimalshelterContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Species).HasMaxLength(30);
 
-            entity.HasOne(d => d.Shelter).WithMany()
+            entity.HasOne(d => d.Shelter).WithMany(p => p.Animals)
                 .HasForeignKey(d => d.ShelterId)
                 .HasConstraintName("animals_ibfk_1");
         });

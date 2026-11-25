@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShelterApiJo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc94217e11aa722fd381747ef5075216179a28ad")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShelterApiJo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShelterApiJo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
